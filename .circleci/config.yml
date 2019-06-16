@@ -13,7 +13,7 @@ jobs:
     # more on that here https://circleci.com/docs/2.0/building-docker-images/
     steps:
       - checkout
-      #- setup_remote_docker
+      - setup_remote_docker
 
       #- run: sudo apt-get update && sudo apt-get -y install docker-ce docker-ce-cli containerd.io
       - run: sudo apt-get update
