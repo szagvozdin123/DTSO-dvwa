@@ -5,7 +5,7 @@ jobs:
     #working_directory: ~/DTSO-dvwa
     # Either docker, machine or MacOS directive must be present in every config file as it sets the execution environment for every build
     docker:
-      - image: circleci/buildpack-deps:jessie-curl:dind
+      - image: circleci/buildpack-deps:jessie-curl-dind
     branches:
       only: master
     # Checkout the CVS code to CircleCI platform
