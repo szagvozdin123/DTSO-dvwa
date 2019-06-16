@@ -2,9 +2,10 @@ version: 2
 jobs:
   build:
     # Working directory is where the CVS code is copied to CircleCI platform
-    working_directory: ~/DTSO-dvwa
-    #docker:
-    #  - image: circleci/golang:1.11
+    #working_directory: ~/DTSO-dvwa
+    # Either docker, machine or MacOS directive must be present in every config file as it sets the execution environment for every build
+    docker:
+      - image: circleci/buildpack-deps:jessie-curl:dind
     branches:
       only: master
     # Checkout the CVS code to CircleCI platform
