@@ -22,9 +22,9 @@ jobs:
       #- run: wget https://download.docker.com/linux/debian/dists/jessie/pool/stable/amd64/docker-ce_18.06.3~ce~3-0~debian_amd64.deb
       #- run: sudo dpkg - i docker-ce_18.06.3~ce~3-0~debian_amd64.deb
       #- run: echo $(which dockerd)
-      - run: docker build . -t dvwa:$CIRCLE_BUILD_NUM --no-cache=true
+      - run: docker -H $DOCKER_HOST build . -t dvwa:$CIRCLE_BUILD_NUM --no-cache=true
       #- run: docker build . -t dvwa:$CIRCLE_BUILD_NUM --no-cache=true
-      - run: echo 'export id=$(docker images | grep -E '^dvwa' | awk -e '{print $3}')'
+      - run: echo $(id=$(docker images | grep -E '^dvwa' | awk -e '{print $3}')
       - run: echo $(docker images | grep 'dvwa')
       #- run: echo 'export DOCKER_REPO="$(if [ ${CIRCLE_PROJECT_USERNAME} == 'Securing-DevOps' ]; then echo securingdevops; else echo $DOCKER_USER; fi)"' >> $BASH_ENV
       #- run: mkdir -p "${GOPATH_BASE}"
