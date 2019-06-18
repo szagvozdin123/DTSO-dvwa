@@ -22,10 +22,10 @@ jobs:
       #- run: wget https://download.docker.com/linux/debian/dists/jessie/pool/stable/amd64/docker-ce_18.06.3~ce~3-0~debian_amd64.deb
       #- run: sudo dpkg - i docker-ce_18.06.3~ce~3-0~debian_amd64.deb
       #- run: echo $(which dockerd)
-      - run: docker -H $DOCKER_HOST build . -t dvwa:$CIRCLE_BUILD_NUM --no-cache=true
+      - run: docker -H $DOCKER_HOST build . -t 715922152488.dkr.ecr.eu-central-1.amazonaws.com/test:$CIRCLE_BUILD_NUM --no-cache=true
       #- run: docker build . -t dvwa:$CIRCLE_BUILD_NUM --no-cache=true
-      - run: echo 'id=$(docker images | grep -E '^dvwa' | awk -e '{print $3}')'
-      - run: echo $(docker images | grep 'dvwa')
+      - run: echo 'id=$(docker images | grep -E '^test' | awk -e '{print $3}')'
+      - run: echo $(docker images | grep 'test')
       - run: echo 'export login=$(aws ecr get-login --no-include-email --region eu-central-1)'
       - run: $login
       - run: docker -H $DOCKER_HOST push 715922152488.dkr.ecr.eu-central-1.amazonaws.com/test:$CIRCLE_BUILD_NUM
