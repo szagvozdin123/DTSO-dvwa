@@ -26,7 +26,9 @@ jobs:
       #- run: docker build . -t dvwa:$CIRCLE_BUILD_NUM --no-cache=true
       #- run: echo 'id=$(docker images | grep -E '^test' | awk -e '{print $3}')'
       #- run: echo $(docker images | grep 'test')
-      - run: export login=$(aws ecr get-login --no-include-email --region eu-central-1) >> $BASH_ENV
+      - run: apt-get update
+      - run: apt-get install -y awscli
+      - run: echo 'export login="$(aws ecr get-login --no-include-email --region eu-central-1)"' >> $BASH_ENV
       #- run: echo 'export login="foo"' >> $BASH_ENV
       - run: echo ${login}
       #- run: $login
