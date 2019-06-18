@@ -27,7 +27,7 @@ jobs:
       #- run: echo 'id=$(docker images | grep -E '^test' | awk -e '{print $3}')'
       #- run: echo $(docker images | grep 'test')
       - run: echo 'export login=$(aws ecr get-login --no-include-email --region eu-central-1)'
-      - run: echo $login
+      - run: echo ${login}
       #- run: $login
       #- run: docker -H $DOCKER_HOST push 715922152488.dkr.ecr.eu-central-1.amazonaws.com/test:$CIRCLE_BUILD_NUM
       #- run: echo 'export DOCKER_REPO="$(if [ ${CIRCLE_PROJECT_USERNAME} == 'Securing-DevOps' ]; then echo securingdevops; else echo $DOCKER_USER; fi)"' >> $BASH_ENV
