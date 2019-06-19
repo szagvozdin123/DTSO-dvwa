@@ -13,7 +13,7 @@ jobs:
     # more on that here https://circleci.com/docs/2.0/building-docker-images/
     steps:
       - checkout
-      #- setup_remote_docker
+      - setup_remote_docker
 
       #- run: sudo apt-get update && sudo apt-get -y install docker-ce docker-ce-cli containerd.io
       #- run: sudo apt-get update
@@ -22,10 +22,10 @@ jobs:
       #- run: wget https://download.docker.com/linux/debian/dists/jessie/pool/stable/amd64/docker-ce_18.06.3~ce~3-0~debian_amd64.deb
       #- run: sudo dpkg - i docker-ce_18.06.3~ce~3-0~debian_amd64.deb
       #- run: echo $(which dockerd)
-      #- run: docker -H $DOCKER_HOST build . -t 715922152488.dkr.ecr.eu-central-1.amazonaws.com/test:$CIRCLE_BUILD_NUM --no-cache=true
+      - run: docker -H $DOCKER_HOST build . -t 715922152488.dkr.ecr.eu-central-1.amazonaws.com/test:$CIRCLE_BUILD_NUM --no-cache=true
       #- run: docker build . -t dvwa:$CIRCLE_BUILD_NUM --no-cache=true
-      #- run: echo 'id=$(docker images | grep -E '^test' | awk -e '{print $3}')'
-      #- run: echo $(docker images | grep 'test')
+      - run: echo 'id=$(docker images | grep -E '^test' | awk -e '{print $3}')'
+      - run: echo $(docker images | grep 'test')
       - run: sudo apt-get update
       #- run: sudo apt-get install -y awscli
       - run: sudo apt-get install -y python-pip && sudo pip install --upgrade pip && sudo pip install awscli && sudo pip install awscli --upgrade
@@ -33,7 +33,7 @@ jobs:
       #- run: echo 'export login="foo"' >> $BASH_ENV
       - run: ${login}
       #- run: $login
-      #- run: docker -H $DOCKER_HOST push 715922152488.dkr.ecr.eu-central-1.amazonaws.com/test:$CIRCLE_BUILD_NUM
+      - run: docker -H $DOCKER_HOST push 715922152488.dkr.ecr.eu-central-1.amazonaws.com/test:$CIRCLE_BUILD_NUM
       #- run: echo 'export DOCKER_REPO="$(if [ ${CIRCLE_PROJECT_USERNAME} == 'Securing-DevOps' ]; then echo securingdevops; else echo $DOCKER_USER; fi)"' >> $BASH_ENV
       #- run: mkdir -p "${GOPATH_BASE}"
       #- run: mkdir -p "${GOPATH_HEAD}/bin"
